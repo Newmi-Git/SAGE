@@ -1,9 +1,12 @@
 from senses import voice as vc
 from senses import translator as tl
-def main():
+from commands import battery as bt
+def brain():
     
     vc.recorder()
-    tl.trancribe_medium()
+    command = tl.trancribe_small()
+    print("You:" + command)
+    bt.change_power_mode(command)
     
-main()
+brain()
 
