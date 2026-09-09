@@ -4,6 +4,7 @@ import json
 memory_file = os.path.join(
     os.path.dirname(__file__),
     "memory",
+    
     "conversations.json"
 )
 

@@ -7,7 +7,6 @@ from memory import memory as mm
 
 
 def brain():
-    
     vc.recorder()
     command = tl.trancribe_tiny()
     mm.save_memory(command)

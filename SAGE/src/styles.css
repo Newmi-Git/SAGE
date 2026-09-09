@@ -1,0 +1,106 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #111;
+    color: white;
+}
+
+.app {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+.heading {
+    display: flex;
+    flex-direction: row;
+}
+
+header {
+    height: 60px;
+    padding: 0 25px;
+    width:100%;
+    display: flex;      
+    align-items: center;
+    justify-content: space-between;
+
+    border-bottom: 1px solid #333;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 20px;
+    letter-spacing: 3px;
+}
+
+.status {
+    font-size: 13px;
+    color: #464646;
+}
+
+.status-dot {
+    color:#29d90a
+}
+/* Main */
+
+main {
+    flex: 1;
+    padding: 40px;
+    overflow-y: auto;
+}
+
+.welcome {
+    margin-top: 100px;
+}
+
+.welcome h2 {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.welcome p {
+    color: #888;
+}
+
+/* Footer */
+
+footer {
+    padding: 20px;
+    display: flex;
+    gap: 10px;
+    border-top: 1px solid #333;
+}
+
+input {
+    flex: 1;
+
+    padding: 15px;
+    border-radius: 10px;
+
+    border: 1px solid #333;
+    background: #1c1c1c;
+    color: white;
+
+    outline: none;
+}
+
+button {
+    width: 50px;
+
+    border: none;
+    border-radius: 10px;
+
+    background: white;
+    color: black;
+
+    cursor: pointer;
+}
+
+button:hover {
+    background: #ddd;
+}

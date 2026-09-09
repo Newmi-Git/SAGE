@@ -1,14 +1,42 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tauri + Vue 3 App</title>
-  </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAGE</title>
+    <link rel="stylesheet" href="/src/styles.css">
+</head>
+<body>
+    <div class="app">
+      <div class="heading">
+        <header>
+            <h1 >SAGE</h1>
+            <span class="status"><span class="status-dot">●</span> Online</span>
+        </header>
+      </div>
+        <main>
+            <div class="welcome">
+                <h2>Hello.</h2>
+                <p>How can I help you?</p>
+            </div>
+            <div class="messages">
+            </div>
 
-  <body>
-    <div id="app"></div>
+        </main>
+
+        <footer>
+            <input
+                type="text"
+                id="commandInput"
+                placeholder="Talk to SAGE..."
+            >
+
+            <button id="sendButton">➤</button>
+        </footer>
+
+    </div>
+
     <script type="module" src="/src/main.js"></script>
-  </body>
+
+</body>
 </html>
