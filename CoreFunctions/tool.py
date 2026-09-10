@@ -2,7 +2,7 @@ from dataclasses import dataclass as dtc
 from enum import Enum as en
 from typing import Callable, Any
 
-class RiskLevel(Enum):
+class RiskLevel(en):
     READ_ONLY = "read_only"
     MODIFY = "modify"
     DESTRUCTIVE = "destructive"

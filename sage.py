@@ -4,6 +4,7 @@ from datetime import datetime as dt
 import os
 from memory import memory as mm
 import commands
+from CoreFunctions import executor
 def brain():
     vc.recorder()
     command = tl.trancribe_tiny()
