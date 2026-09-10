@@ -1,8 +1,16 @@
 import subprocess
+from CoreFunctions.registry import tool
+from CoreFunctions.tool import RiskLevel
+
+@tool(
+    name="change_power_mode",
+    description="Changes the Windows power plan",
+    params={"mode": "string"},   # e.g. "balanced", "power saver", "high performance"
+    risk=RiskLevel.MODIFY
+)
 
 
-
-def change_power_mode(command):
+def change_power_mode(mode: str):
     
     POWER_SAVING_GUID = "a1841308-3541-4fab-bc81-f71556f20b4a"
     BALANCED_GUID = "381b4222-f694-41f0-9685-ff5bb260df2e"

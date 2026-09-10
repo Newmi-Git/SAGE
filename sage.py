@@ -1,18 +1,18 @@
 from senses import voice as vc
 from senses import translator as tl
-from commands import battery as bt
 from datetime import datetime as dt
 import os
 from memory import memory as mm
-
-
+import commands
 def brain():
     vc.recorder()
     command = tl.trancribe_tiny()
     mm.save_memory(command)
     print("You:" + command)
-    bt.change_power_mode(command)
-
+    if "power" in command or "battery" in command:
+        result = executor.execute_tool("change_power_mode", mode="balanced")
+        print(result)
+    brain()
 
 brain()
 
