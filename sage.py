@@ -7,7 +7,7 @@ import commands
 from CoreFunctions import executor
 def brain():
     vc.recorder()
-    command = tl.trancribe_tiny()
+    command = tl.transcribe_turbo()
     mm.save_memory(command)
     print("You:" + command)
     if "power" in command or "battery" in command:

@@ -3,7 +3,7 @@ import numpy as np
 import wave
 import os
 
-sample_rate = 32000
+sample_rate = 16000
 duration = 5
 
 file_path = os.path.join(os.path.dirname(__file__), "recordings","voice.wav")
