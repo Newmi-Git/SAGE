@@ -6,3 +6,4 @@ __pycache__
 # personal data - never commit
 memory/memory/*.json
 senses/recordings/*.wav
+sage.db
