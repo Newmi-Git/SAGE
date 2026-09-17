@@ -2,6 +2,8 @@ from fastapi import FastAPI
 from CoreFunctions.system_monitor import get_ram_usage, get_disk_usage, get_network_usage
 from commands.cpu import get_top_processes
 import psutil
+from commands.cpu import get_processes
+
 
 app = FastAPI(title="SAGE")
 
@@ -24,6 +26,10 @@ def disk():
 @app.get("/system/network")
 def network():
     return get_network_usage()
+
+@app.get("/system/processes")
+def processes(sort_by: str = "cpu", limit: int = 10, name_filter: str = None):
+    return get_processes(sort_by=sort_by, limit=limit, name_filter=name_filter)
 
 if __name__ == "__main__":
     import uvicorn

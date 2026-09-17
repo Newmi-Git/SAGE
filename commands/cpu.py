@@ -1,24 +1,47 @@
-import subprocess
 import psutil
+from CoreFunctions.registry import tool
+from CoreFunctions.tool import RiskLevel
 
-def get_top_processes():
+@tool(
+    name="get_processes",
+    description="Lists running processes, sorted by CPU or memory usage",
+    params={"sort_by": "string", "limit": "int", "name_filter": "string"},
+    risk=RiskLevel.READ_ONLY
+)
+
+def get_processes(sort_by: str = "cpu", limit: int = 10, name_filter: str = None):
+    """
+    sort_by: 'cpu' or 'memory'
+    limit: how many results to return
+    name_filter: optional substring to filter process names by
+    """
     processes = []
+
     for process in psutil.process_iter(['pid', 'name']):
         if process.pid == 0:
             continue
         try:
             cpu_usage = process.cpu_percent(interval=0.1)
+            mem_usage = process.memory_percent()
+            name = process.info['name']
+
+            if name_filter and name_filter.lower() not in name.lower():
+                continue
+
             processes.append({
                 'pid': process.info['pid'],
-                'name': process.info['name'],
-                'cpu': cpu_usage
+                'name': name,
+                'cpu': round(cpu_usage, 2),
+                'memory': round(mem_usage, 2)
             })
         except (psutil.NoSuchProcess, psutil.AccessDenied):
             pass
 
-    processes.sort(key=lambda x: x['cpu'], reverse=True)
-    for process in processes[:10]:
-        print(f"{process['name']} (PID: {process['pid']}) - {process['cpu']}%")
+    key = 'cpu' if sort_by == 'cpu' else 'memory'
+    processes.sort(key=lambda x: x[key], reverse=True)
+
+    return processes[:limit]
 
 if __name__ == "__main__":
-    get_top_processes()
+    for p in get_processes():
+        print(f"{p['name']} (PID: {p['pid']}) - CPU: {p['cpu']}% - RAM: {p['memory']}%")
