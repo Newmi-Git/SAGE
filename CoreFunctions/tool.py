@@ -1,13 +1,13 @@
-from dataclasses import dataclass as dtc
-from enum import Enum as en
+from dataclasses import dataclass
+from enum import Enum
 from typing import Callable, Any
 
-class RiskLevel(en):
+class RiskLevel(Enum):
     READ_ONLY = "read_only"
     MODIFY = "modify"
     DESTRUCTIVE = "destructive"
 
-@dtc
+@dataclass
 class Tool:
     name: str
     description: str

@@ -5,15 +5,21 @@ import os
 from memory import memory as mm
 import commands
 from CoreFunctions import executor
+from CoreFunctions import router
+
 def brain():
-    vc.recorder()
-    command = tl.transcribe_turbo()
-    mm.save_memory(command)
-    print("You:" + command)
-    if "power" in command or "battery" in command:
-        result = executor.execute_tool("change_power_mode", mode="balanced")
-        print(result)
+    while True:
+        vc.recorder()
+        command = tl.transcribe_turbo()
+        mm.save_memory(command)
+        print("You:" + command)
+
+        t = router.find_tool_for_command(command)
+        if t:
+            result = executor.execute_tool(t.name, mode="balanced")  # placeholder kwargs
+            print(result)
+        else:
+            print("SAGE: no matching tool found")
+
+if __name__ == "__main__":
     brain()
-
-brain()
-

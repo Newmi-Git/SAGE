@@ -52,8 +52,8 @@ def change_power_mode(mode: str):
     risk=RiskLevel.READ_ONLY
 )
 
-def show_active_power_mode(show):
-    if show in ("show", "active", "power plan"):
+def show_active_power_mode(mode):
+    if mode in ("show", "active", "power plan"):
         subprocess.run([
             "powercfg",
             "/getactivescheme"
