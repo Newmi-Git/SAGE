@@ -9,6 +9,16 @@ async function greet() {
   // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
   greetMsg.value = await invoke("greet", { name: name.value });
 }
+
+async function killProcess(pid) {
+  if (!confirm(`Kill process ${pid}?`)) return;
+  const res = await fetch(`http://127.0.0.1:8000/process/kill/${pid}?confirm=true`, {
+    method: "POST"
+  });
+  const data = await res.json();
+  console.log(data.result);
+}
+
 </script>
 
 <template>

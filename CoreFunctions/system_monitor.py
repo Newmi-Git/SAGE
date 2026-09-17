@@ -1,5 +1,13 @@
 import psutil
+from CoreFunctions.registry import tool
+from CoreFunctions.tool import RiskLevel
 
+@tool(
+    name="get_ram_usage",
+    description="Returns RAM total/used/percent",
+    params={},
+    risk=RiskLevel.READ_ONLY
+)
 def get_ram_usage():
     mem = psutil.virtual_memory()
     return {
@@ -8,6 +16,12 @@ def get_ram_usage():
         "percent": mem.percent
     }
 
+@tool(
+    name="get_disk_usage",
+    description="Returns disk total/used/percent for a given path",
+    params={"path": "string"},
+    risk=RiskLevel.READ_ONLY
+)
 def get_disk_usage(path: str = "/"):
     disk = psutil.disk_usage(path)
     return {
@@ -16,6 +30,12 @@ def get_disk_usage(path: str = "/"):
         "percent": disk.percent
     }
 
+@tool(
+    name="get_network_usage",
+    description="Returns cumulative bytes sent/received",
+    params={},
+    risk=RiskLevel.READ_ONLY
+)
 def get_network_usage():
     net = psutil.net_io_counters()
     return {
